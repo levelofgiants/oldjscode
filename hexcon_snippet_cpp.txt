@@ -1,0 +1,45 @@
+string getHexed(int n)
+{
+	vector<int> h;
+	string hex;
+	ostringstream oss;
+
+	//hex conversion
+	while( n >= 1)
+	{
+		h.push_back( n % 16 );
+		n /= 16;
+	}
+
+	//replacing numbers with letters
+	for(int i = (int)h.size() - 1; i >= 0; i--)
+	{
+		switch(h[i])
+		{
+		case 10:
+			oss << "A";
+			break;
+		case 11:
+			oss << "B";
+			break;
+		case 12:
+			oss << "C";
+			break;
+		case 13:
+			oss << "D";
+			break;
+		case 14:
+			oss << "E";
+			break;
+		case 15:
+			oss << "F";
+			break;
+		default:
+			oss << h[i];
+			break;
+		}
+	}
+	istringstream iss(oss.str());
+	iss >> hex;
+	return hex;
+}
